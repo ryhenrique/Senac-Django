@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loja de Informática</title>
+</head>
+<body>
+    <h1>Produtos Disponíveis</h1>
+    <ul>
+        {% for produto in produtos %}
+        <li>
+            <strong>{{ produto.nome }}</strong><br>
+            Descrição: {{ produto.descricao }}<br>
+            Preço: R$ {{ produto.preco }}<br>
+            Estoque: {{ produto.estoque }}
+        </li>
+        {% empty %}
+        <p>Não há produtos disponíveis no momento.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
