@@ -1,0 +1,48 @@
+/* Geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+h1 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+}
+
+/* Lista de produtos */
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Destaques */
+li strong {
+    font-size: 1.2em;
+    color: #007BFF;
+}
+
+li p {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Mensagem quando vazio */
+p {
+    text-align: center;
+    color: #999;
+}
