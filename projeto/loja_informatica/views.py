@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 def lista_produtos(request):
     produtos = Produto.objects.all()
@@ -29,3 +31,27 @@ def deletar_produto(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     produto.delete()
     return redirect('lista_produtos')
+
+def cadastro_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('login')  # Redireciona para a URL que você quiser
+    else:
+        form = UserCreationForm()
+    return render(request, 'loja_informatica/cadastro.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')  # Ajuste para a URL que quiser
+    else:
+        form = AuthenticationForm()
+    return render(request, 'loja_informatica/login.html', {'form': form})
